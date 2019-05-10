@@ -111,7 +111,7 @@
               <form id="searchbox" method="get" action="{{ url('tim-kiem.html') }}" >
                 <div class="input-group">
                   <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="keyword">
-                  <button class="btn-search" type="submit" ><i class="fa fa-cart-plus"></i></button>
+                  <button class="btn-search" type="submit" ><i class="fa fa-search"></i></button>
                 </div>
               </form>
             </div>

@@ -20,6 +20,7 @@
         "laravel/tinker": "^1.0",
         "maatwebsite/excel": "^3.0",
         "paypal/rest-api-sdk-php": "^1.13",
+        "softon/sweetalert": "^1.0",
         "unisharp/laravel-filemanager": "^1.9"
     },
     "require-dev": {

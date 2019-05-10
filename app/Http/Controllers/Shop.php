@@ -44,12 +44,10 @@ class shop extends Controller {
     $this->banners = Banner::where('status', 1)->orderBy('sort', 'desc')->orderBy('id', 'desc')->get();
     $this->news = (new CmsNews)->getItemsNews($limit = 8, $opt = 'paginate');
     $this->notice = (new CmsPage)->where('uniquekey', 'notice')->where('status', 1)->first();
-    //////
-
     $this->brands = ShopBrand::getBrands();
     $this->categories = ShopCategory::getCategories(0);
     $this->configs = Config::pluck('value', 'key')->all();
-//Config for  SMTP
+    //Config for  SMTP
     config(['app.name' => $this->configs['site_title']]);
     config(['mail.driver' => ($this->configs['smtp_mode']) ? 'smtp' : 'sendmail']);
     config(['mail.host' => empty($this->configs['smtp_host']) ? env('MAIL_HOST', '') : $this->configs['smtp_host']]);
@@ -60,7 +58,7 @@ class shop extends Controller {
     config(['mail.from' =>
       ['address' => $this->configs['site_email'], 'name' => $this->configs['site_title']]]
     );
-//
+    //
     View::share('categories', $this->categories);
     View::share('brands', $this->brands);
     View::share('banners', $this->banners);
@@ -69,12 +67,8 @@ class shop extends Controller {
     View::share('theme', $this->theme);
     View::share('products_hot', (new ShopProduct)->getProducts($type = 1, $limit = 4, $opt = 'random'));
     View::share('logo', Banner::where('status', 1)->where('type', 0)->orderBy('sort', 'desc')->orderBy('id', 'desc')->first());
-
   }
-/**
- * [index description]
- * @return [type] [description]
- */
+
   public function index(Request $request) {
     $banner = ['0' => 'Logo', '1' => 'Banner lớn', '2' => 'Banner nhỏ', '3' => 'Banner khác'];
     return view($this->theme . '.shop_home',
@@ -88,18 +82,13 @@ class shop extends Controller {
         'banners_right' => Banner::where('status', 1)->where('type', 3)->orderBy('sort', 'desc')->orderBy('id', 'desc')->limit(2)->get(),
         'banners' => Banner::where('status', 1)->orderBy('sort', 'desc')->orderBy('id', 'desc')->get(),
         'notice' => $this->getPage('notice'),
-        'products_new' => (new ShopProduct)->getProducts($type = null, $limit = 20, $opt = null),
+        'products_new' => (new ShopProduct)->getProducts($type = null, $limit = 8, $opt = null),
         'home_page' => 1,
         'blogs' => (new CmsNews)->getItemsNews($limit = 6),
       )
     );
   }
 
-/**
- * [productToCategory description]
- * @param  [type] $key [description]
- * @return [type]      [description]
- */
   public function productToCategory($name, $id) {
     $category = (new ShopCategory)->find($id);
     if ($category) {
@@ -134,7 +123,7 @@ class shop extends Controller {
  */
   public function allProducts() {
     $products = ShopProduct::where('status', 1)
-      ->orderBy('id', 'desc')->paginate(20);
+      ->orderBy('id', 'desc')->paginate(6);
     if ($products) {
       return view($this->theme . '.shop_products',
         array(
@@ -433,10 +422,10 @@ class shop extends Controller {
       foreach ($cart as $key => $item) {
         $product = ShopProduct::find($item->id);
         $htmlCart .= '<li class="item odd"> <a href="' . url('san-pham/' . ktc_str_convert($item->name) . '_' . $item->id . '.html') . '" title="' . $item->name . '" class="product-image"><img src="' . asset('documents/website/thumb/' . $product->image) . '" alt="' . $item->name . '" width="65"></a>
-                              <div class="product-details"> <a href="' . url("removeItem/$item->rowId") . '" title="Xóa" class="remove-cart"><i class="pe-7s-trash"></i></a>
-                                <p class="product-name"><a href="' . url('san-pham/' . ktc_str_convert($item->name) . '_' . $item->id . '.html') . '">' . $item->name . '</a> </p>
-                                <strong>' . $item->qty . '</strong> x <span class="price">' . number_format($item->price) . '</span> </div>
-                            </li>';
+      <div class="product-details"> <a href="' . url("removeItem/$item->rowId") . '" title="Xóa" class="remove-cart"><i class="pe-7s-trash"></i></a>
+      <p class="product-name"><a href="' . url('san-pham/' . ktc_str_convert($item->name) . '_' . $item->id . '.html') . '">' . $item->name . '</a> </p>
+      <strong>' . $item->qty . '</strong> x <span class="price">' . number_format($item->price) . '</span> </div>
+      </li>';
       }
 
     } else {
@@ -623,9 +612,9 @@ class shop extends Controller {
       foreach ($dataTotal as $key => $element) {
         if ($element['value'] != 0) {
           $html .= "<tr class='showTotal'>
-                         <th>" . $element['title'] . "</th>
-                        <td style='text-align: right' id='" . $element['code'] . "'>" . number_format($element['value']) . " VNĐ</td>
-                    </tr>";
+          <th>" . $element['title'] . "</th>
+          <td style='text-align: right' id='" . $element['code'] . "'>" . number_format($element['value']) . " VNĐ</td>
+          </tr>";
         }
 
       }
@@ -676,8 +665,8 @@ class shop extends Controller {
             }
 
             $html .= "<th>" . $element['title'] . "</th>
-                        <td style='text-align: right' id='" . $element['code'] . "'>" . number_format($element['value']) . " VNĐ</td>
-                    </tr>";
+            <td style='text-align: right' id='" . $element['code'] . "'>" . number_format($element['value']) . " VNĐ</td>
+            </tr>";
           }
 
         }
