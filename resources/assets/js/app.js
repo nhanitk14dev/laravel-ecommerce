@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./shop.js');//nhan update 05/2019
 
 window.Vue = require('vue');
 

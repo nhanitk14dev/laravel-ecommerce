@@ -12,21 +12,16 @@
  */
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 //============================
 Route::get('/', 'Shop@index');
-Route::get('index.html', 'Shop@index');
+Route::get('index', 'Shop@index');
 Route::get('/login.html', 'Shop@showLogin');
 Route::get('/shop/{name}_{id}.html', 'Shop@productToCategory');
 Route::get('/san-pham/{name}_{id}.html', 'Shop@productDetail');
 Route::get('/brands/{name}_{id}/{category?}', 'Shop@product_brands');
 Route::get('/profile.html', [
-    'middleware' => 'auth',
-    'uses'       => 'Shop@profile',
+  'middleware' => 'auth',
+  'uses' => 'Shop@profile',
 ]);
 Route::get('/san-pham.html', 'Shop@allProducts');
 Route::get('/wishlist.html', 'Shop@wishlist');
@@ -56,14 +51,14 @@ Route::get('/{key}.html', 'Shop@pages');
 //=====end cms =========
 
 Route::prefix('payment')->group(function () {
-    Route::get('paypal', 'PayPalController@index');
+  Route::get('paypal', 'PayPalController@index');
 });
 
 //===========auth==============
 // Authentication Routes...
 // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('login', function () {
-    return redirect('login.html');
+  return redirect('login.html');
 })->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -71,14 +66,14 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Registration Routes...
 // Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::get('register', function () {
-    return redirect('login.html');
+  return redirect('login.html');
 })->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
 // Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::get('password/reset', function () {
-    return redirect('forgot.html');
+  return redirect('forgot.html');
 })->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');

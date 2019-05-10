@@ -1,5 +1,20 @@
 =========================github=================
 1. source: https://github.com/tomhapbia/laravel-ecommerce
 2. Tích hợp Laravel-admin : http://laravel-admin.org/
+3. Build sass (assets): 
+--> https://chungnguyen.xyz/posts/hay-dung-laravel-mix-cho-cac-du-an-laravel
+--> install: https://topdev.vn/blog/su-dung-laravel-mix-voi-webpack-cho-tat-ca-cac-assets/
 
+npm install (neu co bug file log)
+// Chạy trên môi trường dev, local
+npm run dev [watch], 
+npm run prod, production      (deploy app)
 
+4. webpack  la gi ?
+
+========account==============
+Admin: admin pass: 123456
+
+=========Config setting admin========
+- Phone, facebook, email,..
+https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-plugin/sdk
