@@ -468,13 +468,16 @@ class shop extends Controller {
  * @param Request $request [description]
  */
   public function updateToCart(Request $request) {
+
     if (!$request->ajax()) {
       return redirect('/gio-hang.html');
     }
+
     $id = $request->get('id');
     $rowId = $request->get('rowId');
     $product = ShopProduct::find($id);
     $new_qty = $request->get('new_qty');
+
     if ($product->stock < $new_qty && !$this->configs['product_buy_out_of_stock']) {
       return response()->json(
         ['flg' => 0,
@@ -488,13 +491,9 @@ class shop extends Controller {
     }
 
   }
-/**
- * [cart description]
- * @param  Request $request [description]
- * @return [type]           [description]
- */
+
   public function cart(Request $request) {
-//===update/ add new item to cart
+    //update/ add new item to cart
     if ($request->isMethod('post')) {
       $product_id = $request->get('product_id');
       $opt_sku = empty($request->get('opt_sku')) ? null : $request->get('opt_sku');
@@ -521,7 +520,7 @@ class shop extends Controller {
       }
 
     }
-//====================================================
+
     $objects = array();
     $objects[] = (new ShopOrderTotal)->getShipping();
     $objects[] = (new ShopOrderTotal)->getDiscount();
@@ -531,15 +530,17 @@ class shop extends Controller {
     } else {
       $hasCoupon = false;
     }
+    $cart = Cart::content();
+    $dataTotal = ShopOrderTotal::processDataTotal($objects);
+
     return view($this->theme . '.shop_cart',
       array(
-
         'title_h1' => 'Giỏ hàng',
         'title' => 'Giỏ hàng' . ' - ' . $this->configs['site_title'],
         'description' => '',
         'keyword' => '',
-        'cart' => Cart::content(),
-        'dataTotal' => ShopOrderTotal::processDataTotal($objects),
+        'cart' => $cart,
+        'dataTotal' => $dataTotal,
         'hasCoupon' => $hasCoupon,
       )
     );

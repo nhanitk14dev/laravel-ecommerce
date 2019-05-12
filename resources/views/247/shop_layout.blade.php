@@ -400,6 +400,7 @@ if (!empty($home_page)) {
 <script type="text/javascript" src="{{ asset($theme_asset.'/js/main.js')}}"></script>
 <!-- countdown js -->
 <script type="text/javascript" src="{{ asset($theme_asset.'/js/countdown.js')}}"></script>
+<script type="text/javascript" src="/vendor/laravel-admin/sweetalert2/dist/sweetalert2.all.js"></script>
 @stack('scripts')
 <script type="text/javascript">
   function formatNumber (num) {

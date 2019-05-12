@@ -18,3 +18,9 @@ Admin: admin pass: 123456
 =========Config setting admin========
 - Phone, facebook, email,..
 https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-plugin/sdk
+
+https://sweetalert2.github.io/
+/vendor/laravel-admin/sweetalert2/dist/sweetalert2.all.js
+
+============DEBUG CHORM==========
+NETWORK TAB/CAPTURE SCREENSHOOT ==> MAY QUAY PHIM
