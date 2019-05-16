@@ -377,11 +377,11 @@ if (!empty($home_page)) {
   </div>
 </footer>
 <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-up"></i></a>
-<div class="phonering-alo-phone phonering-alo-green phonering-alo-show" id="phonering-alo-phoneIcon">
+<!-- <div class="phonering-alo-phone phonering-alo-green phonering-alo-show" id="phonering-alo-phoneIcon">
   <div class="phonering-alo-ph-circle"></div>
   <div class="phonering-alo-ph-circle-fill"></div>
   <a href="tel:{{ $configs['site_phone'] }}" class="pps-btn-img" title="Liên hệ">
-   <div class="phonering-alo-ph-img-circle"></div>
+   <div class="phonering-alo-ph-img-circle"></div> -->
  </a>
 </div>
 
