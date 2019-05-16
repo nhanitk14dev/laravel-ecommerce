@@ -62,8 +62,10 @@
                         <a href="{{ url('san-pham/'.ktc_str_convert($product->name).'_'.$product->id.'.html') }}"><img width="100" src="{{asset('documents/website/'.$product->image)}}" alt=""></a>
                     </td>
                     <td>{!! $product->showPrice() !!}</td>
-                    <td><input style="width: 70px;" type="number" onChange="updateCart({{$item->id}});" class="item-qty" id="item-{{$item->id}}" data-row="{{$item->rowId}}" name="qty-{{$item->id}}" value="{{$item->qty}}"><span class="text-danger item-qty-{{$item->id}}" style="display: none;"></span></td>
-                    <td align="right">{{number_format($item->subtotal)}} VNĐ</td>
+                    <td><input style="width: 70px;" type="number" data-item-id="{{ $item->id }}" class="cart-item-qty" id="item-{{$item->id}}" data-row="{{$item->rowId}}" name="qty-{{$item->id}}" qty-old="{{$item->qty}}" value="{{$item->qty}}" min="1" max="{{ $product->stock }}">
+                        <span class="text-danger item-qty-{{$item->id}}" style="display: none;"></span></td>
+                    <td align="right" >
+                     <span id="price-item-{{$item->id}}">{{number_format($item->subtotal)}}</span> VNĐ</td>
                     <td>
                         <a onClick="return confirm('Bạn có muốn xóa sản phẩm này?')" title="Remove Item" alt="Remove Item" class="cart_quantity_delete" href="{{url("removeItem/$item->rowId")}}"><i class="fa fa-times"></i></a>
                     </td>
@@ -221,6 +223,7 @@
 @push('scripts')
 
 <script type="text/javascript">
+
     function updateCart(id){
         var new_qty = $('#item-'+id).val();
         var row_id = $('#item-'+id).attr('data-row');
@@ -237,21 +240,56 @@
                 _token:'{{ csrf_token() }}'},
                 success: function(data){
                     flg= parseInt(data.flg);
+                    var message = data.msg;
                     if(flg ===1)
                     {
                         Swal.fire({
-                          type: 'success',
-                          title: 'Update cart success!',
-                          showConfirmButton: false,
-                          timer: 2000
-                      })
-                    }else{
-                        $('.item-qty-'+id).css('display','block').html(data.msg);
-                    }
+                            type: 'success',
+                            title: 'Update cart success!',
+                            showConfirmButton: false,
+                            timer: 2500
+                        })
 
+                        $('#item-'+id).val(data.cart.qty);
+                        $('#price-item-'+id).html(data.cart.subtotal);
+
+                    }else{
+                        Swal.fire({
+                            type: 'error',
+                            title: message,
+                        })
+                    }
                 }
             });
     }
+
+    var prev_qty_val;
+    var current_qty_val;
+    var max_input;
+    var current_item_id;
+
+    $(document).on('focusin', '.cart-item-qty', function(){
+        $(this).data('val', $(this).val());
+    }).on('change','.cart-item-qty', function(){
+        prev_qty_val = parseInt($(this).data('val'));
+        current_qty_val = parseInt($(this).val());
+        max_input = parseInt($(this).attr('max'));
+        current_item_id = $(this).attr('data-item-id');
+
+        if (prev_qty_val != current_qty_val && current_qty_val <= max_input) {
+            updateCart(current_item_id);
+        }
+
+        if (current_qty_val > max_input) {
+            Swal.fire({
+            type: 'error',
+            title: 'Vượt quá số lượng cho phép.',
+            })
+            $(this).val(max_input);
+        }
+    });
+
+
 
     $('#submit-order').click(function(){
         $('#form-order').submit();
@@ -298,9 +336,6 @@
         $('#coupon-button').button('reset');
     }, 2000);
     }
-
-
-
 
 });
     $('#removeCoupon').click(function() {

@@ -478,15 +478,24 @@ class shop extends Controller {
     $product = ShopProduct::find($id);
     $new_qty = $request->get('new_qty');
 
-    if ($product->stock < $new_qty && !$this->configs['product_buy_out_of_stock']) {
+    // them dk: && !$this->configs['product_buy_out_of_stock']
+    if ($product->stock < $new_qty) {
       return response()->json(
         ['flg' => 0,
           'msg' => 'Vượt quá số lượng cho phép.',
         ]);
     } else {
-      Cart::update($rowId, ($new_qty) ? $new_qty : 0);
+      $cart = Cart::update($rowId, ($new_qty) ? $new_qty : 0);
+      $cart_updated = [
+        'qty' => $cart->qty,
+        'price' => number_format($cart->price),
+        'rowId' => $cart->rowId,
+        'subtotal' => number_format($cart->subtotal),
+      ];
+
       return response()->json(
         ['flg' => 1,
+          'cart' => $cart_updated,
         ]);
     }
 
