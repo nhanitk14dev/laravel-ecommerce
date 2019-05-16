@@ -101,11 +101,11 @@
 
                             @if ($product->price != $product->getPrice())
 
-                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{ number_format($product->getPrice()) }} </span> </p>
-                                    <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{ number_format($product->price) }} </span> </p>
+                                    <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{ number_format($product->getPrice()) }}  {!! config('lfm.unit_price') !!}</span> </p>
+                                    <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{ number_format($product->price) }}  {!! config('lfm.unit_price') !!}</span> </p>
                             @else
                                     <span class="regular-price">
-                                        <span class="price">{{ number_format($product->price) }}</span>
+                                        <span class="price">{{ number_format($product->price) }} {!! config('lfm.unit_price') !!}</span>
                                      </span>
                             @endif
                               </div>
@@ -175,12 +175,12 @@
                   <div class="product-details">
                     <div class="access"> <a href="{{url("removeItem/$item->rowId")}}" title="Remove This Item" class="remove-cart"><i class="icon-close"></i></a></div>
                     <p class="product-name"> <a href="{{ url('san-pham/'.ktc_str_convert($item->name).'_'.$item->id.'.html') }}">{{ $item->name }}</a> </p>
-                    <strong>{{ $item->qty }}</strong> x <span class="price">{{ number_format($item->price) }}</span> </div>
+                    <strong>{{ $item->qty }}</strong> x <span class="price">{{ number_format($item->price) }} {!! config('lfm.unit_price') !!}</span> </div>
                 </li>
             @endforeach
               </ul>
               <div class="summary">
-                <p class="subtotal"> <span class="label">Cart Subtotal:</span> <span class="price">{{ number_format(Cart::subtotal()) }}</span> </p>
+                <p class="subtotal"> <span class="label">Cart Subtotal:</span> <span class="price">{{ number_format(Cart::subtotal()) }} {!! config('lfm.unit_price') !!}</span> </p>
               </div>
               <div class="cart-checkout">
                 <button onClick="location.href='{{ url('gio-hang.html') }}'" class="button button-checkout" title="Submit" type="submit"><span>Checkout</span></button>
@@ -225,11 +225,11 @@
 
                   @if ($product_hot->price != $product_hot->getPrice())
 
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{ number_format($product_hot->getPrice()) }} </span> </p>
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{ number_format($product_hot->price) }} </span> </p>
+                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{ number_format($product_hot->getPrice()) }}  {!! config('lfm.unit_price') !!}</span> </p>
+                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{ number_format($product_hot->price) }}  {!! config('lfm.unit_price') !!}</span> </p>
                   @else
                           <span class="regular-price">
-                              <span class="price">{{ number_format($product_hot->price) }}</span>
+                              <span class="price">{{ number_format($product_hot->price) }} {!! config('lfm.unit_price') !!}</span>
                            </span>
                   @endif
                     <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>

@@ -45,7 +45,7 @@
                                 <div class="price-box">
                                     @if ($product_hot->price == $product_hot->getPrice())
                                         <span class="regular-price">
-                                            <span class="price">{{ number_format($product_hot->price) }}</span>
+                                            <span class="price">{{ number_format($product_hot->price) }}  {!! config('lfm.unit_price') !!}</span>
                                          </span>
                                     @else
                                         <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{ number_format($product_hot->getPrice()) }} </span> </p>
@@ -124,7 +124,7 @@
                                     <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{ number_format($product->price) }} </span> </p>
                             @else
                                     <span class="regular-price">
-                                        <span class="price">{{ number_format($product->price) }}</span>
+                                        <span class="price">{{ number_format($product->price) }} {!! config('lfm.unit_price') !!}</span>
                                      </span>
                             @endif
                               </div>

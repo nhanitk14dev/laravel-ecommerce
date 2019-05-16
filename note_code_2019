@@ -24,3 +24,11 @@ https://sweetalert2.github.io/
 
 ============DEBUG CHORM==========
 NETWORK TAB/CAPTURE SCREENSHOOT ==> MAY QUAY PHIM
+
+
+=================sublimetext============
+package:  fpm ---
+config in package setting
+"enable_auto_align": true,
+	"indent_with_space": 2,
+	"version": 1
