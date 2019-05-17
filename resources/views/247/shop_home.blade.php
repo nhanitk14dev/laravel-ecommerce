@@ -24,7 +24,7 @@
                             <div class="icon-new-label new-left">Sale</div>
                         @endif
                         <div class="pr-img-area product-box-{{ $product_hot->id }}"> <a title="{{ $product_hot->name }}" href="{{ url('san-pham/'.ktc_str_convert($product_hot->name).'_'.$product_hot->id.'.html') }}">
-                          <figure> <img class="first-img" src="{{ asset('documents/website/thumb/'.$product_hot->image) }}" alt="{{ $product_hot->name }}"> <img class="hover-img" src="{{ asset('documents/website/thumb/'.$product_hot->image) }}" alt="{{ $product_hot->name }}"></figure>
+                          <div> <img class="first-img" src="{{ asset('documents/website/thumb/'.$product_hot->image) }}" alt="{{ $product_hot->name }}"> <img class="hover-img" src="{{ asset('documents/website/thumb/'.$product_hot->image) }}" alt="{{ $product_hot->name }}"></div>
                           </a> </div>
                         <div class="pr-info-area">
                           <div class="pr-button">
@@ -98,7 +98,7 @@
                             <div class="icon-new-label new-left">Sale</div>
                         @endif
                         <div class="pr-img-area product-box-{{ $product->id }}"> <a title="{{ $product->name }}" href="{{ url('san-pham/'.ktc_str_convert($product->name).'_'.$product->id.'.html') }}">
-                          <figure> <img class="first-img" src="{{ asset('documents/website/thumb/'.$product->image) }}" alt="{{ $product->name }}"> <img class="hover-img" src="{{ asset('documents/website/thumb/'.$product->image) }}" alt="{{ $product->name }}"></figure>
+                          <div> <img class="first-img" src="{{ asset('documents/website/thumb/'.$product->image) }}" alt="{{ $product->name }}"> <img class="hover-img" src="{{ asset('documents/website/thumb/'.$product->image) }}" alt="{{ $product->name }}"></div>
                           </a> </div>
                         <div class="pr-info-area">
                           <div class="pr-button">
