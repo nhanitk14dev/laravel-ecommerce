@@ -3548,6 +3548,8 @@ nav a:hover {
 }
 .mtmegamenu>ul>li.demo_custom_link_cms {
 	position: relative;
+	color: #eee;
+	font-weight: 300;
 }
 .mtmegamenu .demo_custom_link_cms .menu-items.active {
 	width: 200px;

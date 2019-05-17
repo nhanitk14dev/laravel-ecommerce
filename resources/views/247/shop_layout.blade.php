@@ -95,39 +95,39 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- Only show header in home page -->
-  @if(!empty($home_page))
-  <!-- header inner -->
-  <div class="header-inner">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 col-xs-12 jtv-logo-block">
-          <!-- Header Logo -->
-          <div class="logo"><a title="e-commerce" href="{{ url('/') }}"><img alt="Ecommerce-laravel2019" title="Ecommerce-laravel2019" src="{{ asset('documents/website') }}/{{ $logo->image }}" style="max-height: 90px;"></a> </div>
-        </div>
-        <div class="col-xs-12 col-sm-5 col-md-6 jtv-top-search">
-          <!-- Search -->
-          <div class="top-search">
-            <div id="search">
-              <form id="searchbox" method="get" action="{{ url('tim-kiem.html') }}" >
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="keyword">
-                  <button class="btn-search" type="submit" ><i class="fa fa-search"></i></button>
-                </div>
-              </form>
-            </div>
+    </div>
+    <!-- Only show header in home page -->
+    @if(!empty($home_page))
+    <!-- header inner -->
+    <div class="header-inner">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-xs-12 jtv-logo-block">
+            <!-- Header Logo -->
+            <div class="logo"><a title="e-commerce" href="{{ url('/') }}"><img alt="Ecommerce-laravel2019" title="Ecommerce-laravel2019" src="{{ asset('documents/website') }}/{{ $logo->image }}" style="max-height: 90px;"></a> </div>
           </div>
-          <!-- End Search -->
+          <div class="col-xs-12 col-sm-5 col-md-6 jtv-top-search">
+            <!-- Search -->
+            <div class="top-search">
+              <div id="search">
+                <form id="searchbox" method="get" action="{{ url('tim-kiem.html') }}" >
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="keyword">
+                    <button class="btn-search" type="submit" ><i class="fa fa-search"></i></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- End Search -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  @endif
+    @endif
 </div>
 </header>
 <!-- end header -->
-<nav class="navbar navbar-fixed-top nav-header-top">
+<nav>
   <div class="container">
     <div class="row">
       <div class="mm-toggle-wrap">
@@ -266,12 +266,6 @@
                   </div>
                 </div>
                 <!-- End show list top cart contain hover,click event  -->
-              </div>
-
-              <div class="mt-root-item top-cart">
-                <a class="login" href="{{ url('login.html') }}" rel="nofollow" title="Đăng nhập tài khoản">
-                  Đăng nhập
-                </a>
               </div>
             </li>
           </ul>

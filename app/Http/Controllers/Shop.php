@@ -556,10 +556,33 @@ class shop extends Controller {
 
   public function ChecKoutCart(Request $req) {
     if (Auth::check()) {
-      // The user is logged in...
+
+      $objects   = array();
+      $objects[] = (new ShopOrderTotal)->getShipping();
+      $objects[] = (new ShopOrderTotal)->getDiscount();
+      $objects[] = (new ShopOrderTotal)->getReceived();
+      if (!empty(session('coupon'))) {
+        $hasCoupon = true;
+      } else {
+        $hasCoupon = false;
+      }
+      $cart      = Cart::content();
+      $dataTotal = ShopOrderTotal::processDataTotal($objects);
+
+      return view($this->theme . '.shop_checkout',
+        array(
+          'title_h1'    => 'Thanh toán hóa đơn',
+          'title'       => 'Thanh toán hóa đơn' . ' - ' . $this->configs['site_title'],
+          'description' => '',
+          'keyword'     => '',
+          'cart'        => $cart,
+          'dataTotal'   => $dataTotal,
+          'hasCoupon'   => $hasCoupon,
+        )
+      );
     }
 
-    return redirect('login.html');
+    return redirect('login');
   }
 /**
  * [cart description]
@@ -749,9 +772,6 @@ class shop extends Controller {
  * @return [type] [description]
  */
   public function login() {
-    if (Auth::user()) {
-      return Redirect::away('/');
-    }
     return view($this->theme . '.shop_login',
       array(
         'title'       => 'Trang đăng nhập',
@@ -767,9 +787,6 @@ class shop extends Controller {
  * @return [type] [description]
  */
   public function forgot() {
-    if (Auth::user()) {
-      return Redirect::away('/');
-    }
     return view($this->theme . '.shop_forgot',
       array(
         'title'       => 'Quên mật khẩu',
