@@ -118,62 +118,6 @@
           </div>
           <!-- End Search -->
         </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 top-cart">
-          <div class="cart-icon"><span class="wishlist shopping-wishlist" id="count_wishlist">{{ Cart::instance('wishlist')->count() }}</span></div>
-          <div class="link-wishlist"> <a href="{{ url('wishlist.html') }}"> <i class="icon-heart icons"></i><span> Wishlist</span></a> </div>
-          <!-- top cart -->
-          <div class="top-cart-contain">
-            <div class="mini-cart">
-              <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="{{ url('gio-hang.html') }}">
-                <div class="cart-icon"><i class="icon-basket-loaded icons"></i><span class="cart-total shopping-cart" id="count_cart">{{ Cart::instance('default')->count() }}</span></div>
-                <div class="shoppingcart-inner hidden-xs">
-                  <span class="cart-title">My Cart</span>
-                </div>
-              </a>
-            </div>
-            <div>
-              @php
-              $cart      = Cart::content();
-              @endphp
-              <div class="top-cart-content">
-                <div class="block-subtitle hidden">Recently added items</div>
-                <ul id="cart-sidebar" class="mini-products-list">
-                  @if (count($cart) ==0)
-                  <div style="text-align: center;">Giỏ hàng trống</div>
-                  @else
-                  @foreach($cart as $item)
-                  @php
-                  $product = App\Models\ShopProduct::find($item->id);
-                  @endphp
-                  <li class="item odd"> <a href="{{ url('san-pham/'.ktc_str_convert($item->name).'_'.$item->id.'.html') }}" title="{{ $item->name }}" class="product-image"><img src="{{ asset('documents/website/'.$product->image) }}" alt="{{ $item->name }}" width="65"></a>
-                    <div class="product-details"> <a href="{{url("removeItem/$item->rowId")}}" title="Xóa" class="remove-cart"><i class="pe-7s-trash"></i></a>
-                      <p class="product-name"><a href="{{ url('san-pham/'.ktc_str_convert($item->name).'_'.$item->id.'.html') }}">{{ $item->name }}</a> </p>
-                      <strong>{{ $item->qty }}</strong> x <span class="price">{{ number_format($item->price) }}</span> </div>
-                    </li>
-                    @endforeach
-                    @endif
-                  </ul>
-                  @if (count($cart) == 0)
-                  @php
-                  $style="display:none;";
-                  @endphp
-                  @else
-                  @php
-                  $style="display:block;";
-                  @endphp
-                  @endif
-
-                  <div class="top-subtotal" style="{{ $style }}">Subtotal: <span class="price subtotal">{{ number_format(Cart::subtotal()) }}</span></div>
-                  <div class="actions" style="{{ $style }}">
-                    <button class="btn-checkout" type="button" onClick="location.href='{{ url('gio-hang.html') }}'"><i class="fa fa-check"></i><span>Checkout</span></button>
-                    <button class="view-cart" type="button" onClick="location.href='{{ url('gio-hang.html') }}'"><i class="fa fa-shopping-cart"></i><span>View Cart</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -193,66 +137,145 @@
             <h3><span>Danh mục sản phẩm</span></h3>
           </div>
 
-        <div class="mega-menu-category" style="display: none !important;">
-          <!-- Shop by category -->
-          <ul class="nav">
-            @foreach ($categories as $category)
-            <li><a href="{{ url('shop/'.ktc_str_convert($category->name).'_'.$category->id.'.html') }}">{{ $category->name }}</a>
-              @if (count($category->getChildrens($category->id))>0)
-              <div class="wrap-popup column1">
-                <div class="popup">
-                  <ul class="nav">
-                    @foreach ($category->getChildrens($category->id) as $cateChild)
-                    <li>
-                      <a href="{{ url('shop/'.ktc_str_convert($cateChild->name).'_'.$cateChild->id.'.html') }}">{{ $cateChild->name }}</a>
-                    </li>
-                    @endforeach
-                  </ul>
+          <div class="mega-menu-category" style="display: none !important;">
+            <!-- Shop by category -->
+            <ul class="nav">
+              @foreach ($categories as $category)
+              <li><a href="{{ url('shop/'.ktc_str_convert($category->name).'_'.$category->id.'.html') }}">{{ $category->name }}</a>
+                @if (count($category->getChildrens($category->id))>0)
+                <div class="wrap-popup column1">
+                  <div class="popup">
+                    <ul class="nav">
+                      @foreach ($category->getChildrens($category->id) as $cateChild)
+                      <li>
+                        <a href="{{ url('shop/'.ktc_str_convert($cateChild->name).'_'.$cateChild->id.'.html') }}">{{ $cateChild->name }}</a>
+                      </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                </div>
+                @endif
+              </li>
+              <!-- /.div -->
+              @endforeach
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-9 jtv-megamenu">
+        <div class="mtmegamenu">
+          <ul class="hidden-xs">
+            <li class="mt-root demo_custom_link_cms">
+              <div class="mt-root-item"><a href="{{ url('/') }}">
+                <div class="title title_font"><span class="title-text">Home</span></div>
+              </a></div>
+            {{-- </li> --}}
+            <li class="mt-root">
+              <div class="mt-root-item"><a href="{{ url('san-pham.html') }}">
+                <div class="title title_font"><span class="title-text">Tất cả sản phẩm</span></div>
+              </a></div>
+            </li>
+            <li class="mt-root">
+              <div class="mt-root-item"><a href="{{ url('gioi-thieu.html') }}">
+                <div class="title title_font"><span class="title-text">Giới thiệu</span></div>
+              </a></div>
+            </li>
+           <!--  <li class="mt-root demo_custom_link_cms">
+              <div class="mt-root-item"><a href="{{ url('blogs.html') }}">
+                <div class="title title_font"><span class="title-text">Blog</span></div>
+              </a></div>
+            </li> -->
+            <li class="mt-root demo_custom_link_cms">
+              <div class="mt-root-item">
+                <a href="{{ url('lien-he.html') }}">
+                  <div class="title title_font">
+                    <span class="title-text">Liên hệ
+                    </span>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <!-- Nhan update design top cart & checkout -->
+            <li class="mt-root demo_custom_link_cms">
+              <!-- view like -->
+              <div class="mt-root-item top-cart">
+                <div class="cart-icon">
+                  <span class="wishlist shopping-wishlist" id="count_wishlist">{{ Cart::instance('wishlist')->count() }}</span>
+                </div>
+                <div class="link-wishlist">
+                  <a href="{{ url('wishlist.html') }}"> <i class="icon-heart icons" data-toggle="tooltip" title="Wishlist"></i>
+                  </a>
                 </div>
               </div>
-              @endif
+              <div class="mt-root-item top-cart">
+                <!-- Show list top cart contain hover,click event  -->
+                <div class="top-cart-contain">
+                  <!-- view cart -->
+                  <div class="mini-cart">
+                    <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="{{ url('gio-hang.html') }}">
+                      <div class="cart-icon" data-toggle="tooltip" title="My cart">
+                        <i class="icon-basket-loaded icons"></i>
+                        <span class="cart-total shopping-cart" id="count_cart">{{ Cart::instance('default')->count() }}
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                  <!-- Show list cart -->
+                  <div>
+                    @php
+                    $cart      = Cart::content();
+                    @endphp
+                    <div class="top-cart-content">
+                      <div class="block-subtitle hidden">Recently added items</div>
+                      <ul id="cart-sidebar" class="mini-products-list">
+                        @if (count($cart) ==0)
+                        <div style="text-align: center;">Giỏ hàng trống</div>
+                        @else
+                        @foreach($cart as $item)
+                        @php
+                        $product = App\Models\ShopProduct::find($item->id);
+                        @endphp
+                        <li class="item odd"> <a href="{{ url('san-pham/'.ktc_str_convert($item->name).'_'.$item->id.'.html') }}" title="{{ $item->name }}" class="product-image"><img src="{{ asset('documents/website/'.$product->image) }}" alt="{{ $item->name }}" width="65"></a>
+                          <div class="product-details"> <a href="{{url("removeItem/$item->rowId")}}" title="Xóa" class="remove-cart"><i class="pe-7s-trash"></i></a>
+                            <p class="product-name"><a href="{{ url('san-pham/'.ktc_str_convert($item->name).'_'.$item->id.'.html') }}">{{ $item->name }}</a> </p>
+                            <strong>{{ $item->qty }}</strong> x <span class="price">{{ number_format($item->price) }}</span> </div>
+                          </li>
+                          @endforeach
+                          @endif
+                        </ul>
+                        @if (count($cart) == 0)
+                        @php
+                        $style="display:none;";
+                        @endphp
+                        @else
+                        @php
+                        $style="display:block;";
+                        @endphp
+                        @endif
+                        <div class="top-subtotal" style="{{ $style }}">Subtotal: <span class="price subtotal">{{ number_format(Cart::subtotal()) }} {!! config('lfm.unit_price') !!}</span></div>
+                        <div class="actions" style="{{ $style }}">
+                          <button class="btn-checkout" type="button" onClick="location.href='{{ url('gio-hang.html') }}'"><i class="fa fa-check"></i><span>Checkout</span></button>
+                          <button class="view-cart" type="button" onClick="location.href='{{ url('gio-hang.html') }}'"><i class="fa fa-shopping-cart"></i><span>View Cart</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End show list top cart contain hover,click event  -->
+              </div>
+
+              <div class="mt-root-item top-cart">
+                <a class="login" href="{{ url('login.html') }}" rel="nofollow" title="Đăng nhập tài khoản">
+                  Đăng nhập
+                </a>
+              </div>
             </li>
-            <!-- /.div -->
-            @endforeach
           </ul>
         </div>
       </div>
     </div>
-    <div class="col-md-9 col-sm-9 jtv-megamenu">
-      <div class="mtmegamenu">
-        <ul class="hidden-xs">
-          <li class="mt-root demo_custom_link_cms">
-            <div class="mt-root-item"><a href="{{ url('/') }}">
-              <div class="title title_font"><span class="title-text">Home</span></div>
-            </a></div>
-          {{-- </li> --}}
-          <li class="mt-root">
-            <div class="mt-root-item"><a href="{{ url('san-pham.html') }}">
-              <div class="title title_font"><span class="title-text">Tất cả sản phẩm</span></div>
-            </a></div>
-          </li>
-          <li class="mt-root">
-            <div class="mt-root-item"><a href="{{ url('gioi-thieu.html') }}">
-              <div class="title title_font"><span class="title-text">Giới thiệu</span></div>
-            </a></div>
-          </li>
-          <li class="mt-root demo_custom_link_cms">
-            <div class="mt-root-item"><a href="{{ url('blogs.html') }}">
-              <div class="title title_font"><span class="title-text">Blog</span></div>
-            </a></div>
-          </li>
-          <li class="mt-root demo_custom_link_cms">
-            <div class="mt-root-item"><a href="{{ url('lien-he.html') }}">
-              <div class="title title_font"><span class="title-text">Liên hệ</span></div>
-            </a></div>
-          </li>
-
-          <li></li>
-        </ul>
-      </div>
-    </div>
   </div>
-</div>
 </nav>
 
 @if(Session::has('message'))
@@ -306,25 +329,25 @@
           <div class="text-des">
             <div class="icon-wrapper"><i class="fa fa-umbrella"></i></div>
             <div class="service-wrapper">
-               <h3>Support {!! config('lfm.email_contact') !!}</h3>
-              <p>Liên hệ: {{ $configs['site_phone'] }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col col-md-3 col-sm-6 col-xs-12">
-        <div class="block-wrapper user">
-          <div class="text-des">
-            <div class="icon-wrapper"><i class="fa fa-tags"></i></div>
-            <div class="service-wrapper">
-              <h3>Member Discount</h3>
-              <p>25% on order over $199</p>
-            </div>
+             <h3>Support {!! config('lfm.email_contact') !!}</h3>
+             <p>Liên hệ: {{ $configs['site_phone'] }}</p>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col col-md-3 col-sm-6 col-xs-12">
+      <div class="block-wrapper user">
+        <div class="text-des">
+          <div class="icon-wrapper"><i class="fa fa-tags"></i></div>
+          <div class="service-wrapper">
+            <h3>Member Discount</h3>
+            <p>25% on order over $199</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div> --}}
 
 <!-- Footer -->

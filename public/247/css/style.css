@@ -368,6 +368,7 @@ label {
 }
 /*nhan update header when scroll*/
 .nav-header-top {
+	padding: 5px;
     z-index: 1000;
     z-index: 999999;
     background: rgb(29, 33, 171);
@@ -928,8 +929,9 @@ select.cate-dropdown {
 	-o-transform: scaleY(1);
 	transform: scaleY(1);
 }
+/*Nhan update top-cart*/
 .top-cart {
-	margin-top: 38px;
+	margin-top: -15px;
 }
 .mini-products-list .product-image {
 	float: left;
@@ -1037,8 +1039,9 @@ select.cate-dropdown {
 	margin-left: 0px;
 	height: 40px;
 }
+/*nhan update 2019*/
 .mtmegamenu .top-cart-contain {
-	display: none;
+	padding-right: 24px;
 }
 .top-cart-title p {
 	margin: 0
@@ -3572,7 +3575,7 @@ nav a:hover {
 	overflow: hidden;
 	white-space: nowrap;
 	letter-spacing: 1px;
-	padding: 13px 0 15px
+	padding: 13px 5px 15px;
 }
 .mtmegamenu a .title.title_font span {
 	color: #fff;
