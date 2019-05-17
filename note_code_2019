@@ -19,6 +19,19 @@ Admin: admin pass: 123456
 - Phone, facebook, email,..
 https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-plugin/sdk
 
+
+=================MailTrap =====================
+nhandevphp@gmail.com
+config:
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=25 
+MAIL_USERNAME=a36f7b5f64f090
+MAIL_PASSWORD=86bca8fe8a3bbd
+MAIL_FROM_ADDRESS=nhandevphp@gmail.com
+MAIL_FROM_NAME='NIT'
+EMALL_DEFAULT=nhandevphp@gmail.com
+================================================
 https://sweetalert2.github.io/
 /vendor/laravel-admin/sweetalert2/dist/sweetalert2.all.js
 

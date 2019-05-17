@@ -96,6 +96,8 @@
       </div>
     </div>
   </div>
+  <!-- Only show header in home page -->
+  @if(!empty($home_page))
   <!-- header inner -->
   <div class="header-inner">
     <div class="container">
@@ -121,6 +123,7 @@
       </div>
     </div>
   </div>
+  @endif
 </div>
 </header>
 <!-- end header -->
@@ -289,6 +292,7 @@
 @yield('banner')
 @yield('notice')
 @yield('breadcrumb')
+@include('partials.message')
 @yield('content')
 @else
 <div id="columns" class="container"  style="color:red;text-align: center;">

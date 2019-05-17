@@ -21,12 +21,13 @@ Route::get('/san-pham/{name}_{id}.html', 'Shop@productDetail')->name('product.de
 Route::get('/brands/{name}_{id}/{category?}', 'Shop@product_brands')->name('product.brands');
 Route::get('/profile.html', [
   'middleware' => 'auth',
-  'uses' => 'Shop@profile',
+  'uses'       => 'Shop@profile',
 ]);
 Route::get('/san-pham.html', 'Shop@allProducts');
 Route::get('/wishlist.html', 'Shop@wishlist');
 Route::get('/gio-hang.html', 'Shop@cart');
 Route::post('/gio-hang.html', 'Shop@cart');
+Route::get('/thanh-toan-don-hang', 'Shop@ChecKoutCart')->name('cart.checkout');
 Route::get('/tim-kiem.html', 'Shop@search');
 Route::get('/removeItem/{id}', 'Shop@removeItem');
 Route::get('/removeItemFromWl/{id}', 'Shop@removeItemFromWl');
@@ -63,8 +64,6 @@ Route::get('login', function () {
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-// Registration Routes...
-// Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::get('register', function () {
   return redirect('login.html');
 })->name('register');
