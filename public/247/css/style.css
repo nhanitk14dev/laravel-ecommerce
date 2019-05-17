@@ -100,6 +100,13 @@ img {
 	border: 0;
 	max-width: 100%
 }
+
+/*nhan update img 2019 */
+img.first-img {
+    max-height: 245px;
+    max-width: 93%;
+}
+
 a {
 	color: #333333;
 	text-decoration: none;
@@ -360,6 +367,13 @@ label {
 	color: #333333;
 	border-radius: 3px;
 }
+/*nhan update header when scroll*/
+.nav-header-top {
+    z-index: 1000;
+    z-index: 999999;
+    background: rgb(29, 33, 171);
+}
+
 #newsletter-popup .subscribe-bottom input[type=checkbox] {
 	vertical-align: sub;
 }
@@ -502,6 +516,8 @@ label {
 .header-top a:hover {
 	color: #33ccff;
 }
+
+
 .welcome-msg {
 	text-align: left;
 	display: inline-block;
@@ -4134,7 +4150,6 @@ html {
 	font-size: 28px;
 	background: #5255d6;
 	width: 100%;
-	margin-top: -5px;
 }
 .mega-menu-title::after {
 	position: absolute;
@@ -4193,6 +4208,7 @@ html {
 .mega-menu-category ul li i {
 	width: 28px;
 	text-align: center;
+	border-radius: 10px;
 }
 .mega-menu-category > .nav > li > a {
 	border-bottom: 1px solid #e5e5e5;

@@ -77,8 +77,8 @@ include 'top.php';
             <div class="text-des">
               <div class="icon-wrapper"><i class="fa fa-umbrella"></i></div>
               <div class="service-wrapper">
-                <h3>Support 24/7</h3>
-                <p>Call us: ( +123 ) 456 789</p>
+              <h3>Support {!! config('lfm.email_contact') !!}</h3>
+                <p>Call us: {!! config('lfm.phone_contact') !!} </p>
               </div>
             </div>
           </div>

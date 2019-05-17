@@ -180,7 +180,7 @@
 </div>
 </header>
 <!-- end header -->
-<nav>
+<nav class="navbar navbar-fixed-top nav-header-top">
   <div class="container">
     <div class="row">
       <div class="mm-toggle-wrap">
@@ -193,14 +193,8 @@
             <h3><span>Danh mục sản phẩm</span></h3>
           </div>
 
+        <div class="mega-menu-category" style="display: none !important;">
           <!-- Shop by category -->
-          <?php
-if (!empty($home_page)) {
-  echo '            <div class="mega-menu-category" style="display: block !important;">';
-} else {
-  echo '            <div class="mega-menu-category" style="display: none !important;">';
-}
-?>
           <ul class="nav">
             @foreach ($categories as $category)
             <li><a href="{{ url('shop/'.ktc_str_convert($category->name).'_'.$category->id.'.html') }}">{{ $category->name }}</a>
@@ -312,7 +306,7 @@ if (!empty($home_page)) {
           <div class="text-des">
             <div class="icon-wrapper"><i class="fa fa-umbrella"></i></div>
             <div class="service-wrapper">
-              <h3>Support 24/7</h3>
+               <h3>Support {!! config('lfm.email_contact') !!}</h3>
               <p>Liên hệ: {{ $configs['site_phone'] }}</p>
             </div>
           </div>

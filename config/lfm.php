@@ -191,4 +191,6 @@ return [
   ],
   'unit_price'               => 'VND',
 
+  'email_contact'            => 'nhanitk14dev@gmail.com',
+  'phone_contact'            => '034.889.876.4',
 ];

@@ -197,11 +197,11 @@
                                 <div class="price-box">
                                     @if (empty($product_real->getListPrice()[1]))
                                         <span class="regular-price">
-                                            <span class="price">{{ $product_real->getListPrice()[0] }}</span>
+                                            <span class="price">{{ $product_real->getListPrice()[0] }} {!! config('lfm.unit_price') !!}</span>
                                          </span>
                                     @else
-                                        <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{ $product_real->getListPrice()[0] }} </span> </p>
-                                        <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{ $product_real->getListPrice()[1] }} </span> </p>
+                                        <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> {{ $product_real->getListPrice()[0] }} {!! config('lfm.unit_price') !!} </span> </p>
+                                        <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> {{ $product_real->getListPrice()[1] }} {!! config('lfm.unit_price') !!} </span> </p>
                                     @endif
                               </div>
 
