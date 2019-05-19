@@ -424,7 +424,7 @@ class shop extends Controller {
         $htmlCart .= '<li class="item odd"> <a href="' . url('san-pham/' . ktc_str_convert($item->name) . '_' . $item->id . '.html') . '" title="' . $item->name . '" class="product-image"><img src="' . asset('documents/website/thumb/' . $product->image) . '" alt="' . $item->name . '" width="65"></a>
       <div class="product-details"> <a href="' . url("removeItem/$item->rowId") . '" title="Xóa" class="remove-cart"><i class="pe-7s-trash"></i></a>
       <p class="product-name"><a href="' . url('san-pham/' . ktc_str_convert($item->name) . '_' . $item->id . '.html') . '">' . $item->name . '</a> </p>
-      <strong>' . $item->qty . '</strong> x <span class="price">' . number_format($item->price) . '</span> </div>
+      <strong>' . $item->qty . '</strong> x <span class="price">' . number_format($item->price) . config('lfm.unit_price') . '</span> </div>
       </li>';
       }
 

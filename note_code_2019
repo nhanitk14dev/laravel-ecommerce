@@ -52,3 +52,4 @@ composer require maatwebsite/excel:~2.1.0
 php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider"
 
 vendor/encore/laravel-admin/resources/views/partials/js.blade.php
+vendor/encore/laravel-admin/src/Form/Tools.php

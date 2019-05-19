@@ -417,19 +417,9 @@
 <script type="text/javascript" src="{{ asset($theme_asset.'/js/countdown.js')}}"></script>
 <script type="text/javascript" src="/vendor/laravel-admin/sweetalert2/dist/sweetalert2.all.js"></script>
 @stack('scripts')
+<script type="text/javascript" src="{{ asset('js/shop.js')}}"></script>
 <script type="text/javascript">
-  function formatNumber (num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-  }
-  // $('#total').html(formatNumber(parseInt({{ Cart::subtotal() }})+ parseInt($('#shipping').val())));
-  $('#shipping').change(function(){
-    var subtotal = parseInt($('.price .subtotal').html());
-    var shipping = $('#shipping').val();
-    $('#total').html(formatNumber(subtotal)+ parseInt(shipping));
-  });
-</script>
 
-<script type="text/javascript">
   function addToCart(id,instance = null){
     if(instance == null || instance ==''){
       var cart = $('.shopping-cart');
