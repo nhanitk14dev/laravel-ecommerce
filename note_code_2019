@@ -45,3 +45,10 @@ config in package setting
 "enable_auto_align": true,
 	"indent_with_space": 2,
 	"version": 1
+
+==============EXPORT EXCEL============
+In current project use this verison. If wanna upgrade, must to delete file config/excel.php & rework code using in project. 
+composer require maatwebsite/excel:~2.1.0
+php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider"
+
+vendor/encore/laravel-admin/resources/views/partials/js.blade.php
