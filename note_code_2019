@@ -51,5 +51,18 @@ In current project use this verison. If wanna upgrade, must to delete file confi
 composer require maatwebsite/excel:~2.1.0
 php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider"
 
+==========Add line cdn in file js==========
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.js"></script>
+
 vendor/encore/laravel-admin/resources/views/partials/js.blade.php
 vendor/encore/laravel-admin/src/Form/Tools.php
+===========add filter custom in vendor/encore/laravel-admin/src/Controllers/RoleController.php=============
+
+$grid->filter(function ($filter) {
+// Remove the default id filter
+$filter->disableIdFilter();
+// Add a column filter
+$filter->like('name', 'name');
+});
+
+ =============================
