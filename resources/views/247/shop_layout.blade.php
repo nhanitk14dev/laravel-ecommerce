@@ -467,7 +467,7 @@
             if(data.instance =='default'){
               $('#count_cart').html(data.count_cart);
               $('#cart-sidebar').html(data.htmlCart);
-              $('.subtotal').html(data.subtotal);
+              $('.subtotal').html(data.subtotal + 'VND');
               $('.top-subtotal').show();
               $('.actions').show();
             }else{
