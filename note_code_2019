@@ -65,4 +65,6 @@ $filter->disableIdFilter();
 $filter->like('name', 'name');
 });
 
- =============================
+ ========php artisan make:auth=================
+ - Bug can't reset--> must to Auth::routes(); in routes.
+ - Reset password

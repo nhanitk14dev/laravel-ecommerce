@@ -35,7 +35,7 @@ Route::post('/addToCart', 'Shop@addToCart');
 Route::post('/updateToCart', 'Shop@updateToCart');
 Route::post('/storecart', 'Shop@storecart');
 Route::get('/login.html', 'Shop@login');
-Route::get('/forgot.html', 'Shop@forgot');
+Route::get('/forgot', 'Shop@forgot');
 Route::post('/usePromotion', 'Shop@usePromotion');
 Route::post('product_type', 'Shop@product_type');
 //========end shop ================
