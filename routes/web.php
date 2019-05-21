@@ -22,6 +22,8 @@ Route::get('/profile.html', [
   'middleware' => 'auth',
   'uses'       => 'Shop@profile',
 ]);
+
+Route::post('/change-profile', 'Shop@changeProfile')->name('user.change_info');
 Route::get('/san-pham.html', 'Shop@allProducts');
 Route::get('/wishlist.html', 'Shop@wishlist');
 Route::get('/gio-hang.html', 'Shop@cart');
@@ -35,7 +37,7 @@ Route::post('/addToCart', 'Shop@addToCart');
 Route::post('/updateToCart', 'Shop@updateToCart');
 Route::post('/storecart', 'Shop@storecart');
 Route::get('/login.html', 'Shop@login');
-Route::get('/forgot', 'Shop@forgot');
+Route::get('/forgot.html', 'Shop@forgot');
 Route::post('/usePromotion', 'Shop@usePromotion');
 Route::post('product_type', 'Shop@product_type');
 //========end shop ================

@@ -476,3 +476,17 @@ div#reset-password-page {
     font-size: 13px;
     padding: 35px;
 }
+
+#grid-user-info {
+    background-color: #f5f5f5;
+    padding: 20px;
+    color: #0d0c0c;
+    margin: 20px 0 20px 0;
+}
+
+.shipping_address td{
+    padding: 3px;
+}
+.shipping_address textarea,.shipping_address input{
+    width: 100%;
+}

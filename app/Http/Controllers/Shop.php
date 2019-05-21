@@ -208,6 +208,26 @@ class shop extends Controller {
     ));
   }
 
+  public function changeProfile(Request $request) {
+    $user = Auth::user();
+
+    $data = $this->validate($request, [
+      'phone'    => 'min:6|max:20',
+      'name'     => 'max:20',
+      'address1' => 'max:255',
+      'address2' => 'max:255',
+    ]);
+
+    $user['name']     = $request->name;
+    $user['address1'] = $request->address1;
+    $user['address2'] = $request->address2;
+    $user['phone']    = $request->phone;
+
+    $user->save();
+
+    return redirect()->back()->with('status', 'Thay đổi thông tin thành công !');
+  }
+
 /**
  * Get list product follow brands
  * @param  int $id brand
